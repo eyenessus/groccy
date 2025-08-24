@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.whaply.Groccy.infrastructure.entitys.User;
+import com.whaply.Groccy.infrastructure.entities.User;
 
 import jakarta.transaction.Transactional;
 

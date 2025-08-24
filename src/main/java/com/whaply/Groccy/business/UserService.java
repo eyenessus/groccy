@@ -3,7 +3,7 @@ package com.whaply.Groccy.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.whaply.Groccy.infrastructure.entitys.User;
+import com.whaply.Groccy.infrastructure.entities.User;
 import com.whaply.Groccy.infrastructure.repository.UserRepository;
 import com.whaply.Groccy.interfaces.IUserService;
 

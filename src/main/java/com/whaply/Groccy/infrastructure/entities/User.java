@@ -1,4 +1,4 @@
-package com.whaply.Groccy.infrastructure.entitys;
+package com.whaply.Groccy.infrastructure.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
