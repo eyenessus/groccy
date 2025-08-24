@@ -3,5 +3,8 @@ package com.whaply.Groccy.interfaces;
 import com.whaply.Groccy.infrastructure.entities.User;
 
 public interface IUserService {
- public User create(User user);
+    User create(User user);
+    User findByUsername(String username);
+    void deleteByUsername(String username);
+    User update(User user);
 }

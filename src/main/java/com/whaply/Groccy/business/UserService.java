@@ -8,7 +8,9 @@ import com.whaply.Groccy.infrastructure.repository.UserRepository;
 import com.whaply.Groccy.interfaces.IUserService;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 
+@Transactional
 @Service
 public class UserService implements  IUserService {
     @Autowired
@@ -19,15 +21,18 @@ public class UserService implements  IUserService {
         return userRepository.save(user);
     }
 
+    @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException("User not Found"));
     }
 
+    @Override
     public void deleteByUsername(String username) {
         userRepository.deleteByUsername(username);
     }
-    
-    public User update(User user){
+
+    @Override
+    public User update(User user) {
         User existingUser = userRepository.findByUsername(user.getUsername()).orElseThrow(() -> new EntityNotFoundException("User not Found"));
         if(user.getName() != null) existingUser.setName(user.getName());
         if(user.getPassword() != null) existingUser.setPassword(user.getPassword());
