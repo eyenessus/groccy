@@ -3,10 +3,13 @@ package com.whaply.Groccy.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.whaply.Groccy.dtos.requests.UserRequest;
+import com.whaply.Groccy.dtos.responses.UserResponse;
 import com.whaply.Groccy.exceptions.NotFoundException;
 import com.whaply.Groccy.infrastructure.entities.User;
 import com.whaply.Groccy.infrastructure.repository.UserRepository;
 import com.whaply.Groccy.interfaces.IUserService;
+import com.whaply.Groccy.mappers.UserMapper;
 
 import jakarta.transaction.Transactional;
 
@@ -16,10 +19,14 @@ public class UserService implements  IUserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserMapper userMapper; 
+
     @Override
-    public int create(User user) {
-        User userCreated = userRepository.save(user);
-        return userCreated.id;
+    public UserResponse create(UserRequest user) {
+        User userEntity = userMapper.toEntity(user);
+        User userCreated = userRepository.save(userEntity);
+        return userMapper.toResponse(userCreated);
     }
 
     @Override
